@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oficina Digital - Portal de Serviços gov.br</title>
+  <meta name="description" content="Serviço Nacional de Manutenção e Assistência Técnica de Computadores da Oficina Digital - Governo Federal.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA OFICIAL BRASIL (GOV.BR) -->
+  <aside class="barra-brasil" aria-label="Barra de Identidade do Governo Federal">
+    <div class="container container-brasil">
+      <div class="brasil-logo-area">
+        <span class="brasil-bandeira">🇧🇷</span>
+        <a href="#" class="brasil-link" title="Portal do Governo Federal">
+          <span class="gov-texto">gov.<strong>br</strong></span>
+        </a>
+        <span class="brasil-orgao">Ministério da Ciência, Tecnologia e Inovação</span>
+      </div>
+
+      <!-- Barra de Acessibilidade Padrão Gov.br -->
+      <nav class="brasil-acessibilidade" aria-label="Acessibilidade">
+        <button type="button" id="btnAltoContraste" class="btn-acessibilidade" title="Ativar modo de alto contraste">
+          🌓 Alto Contraste
+        </button>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- CABEÇALHO PRINCIPAL DO ÓRGÃO / SERVIÇO -->
+  <header class="cabecalho-servico">
+    <div class="container cabecalho-conteudo">
+      <div class="identidade-servico">
+        <div class="brasao-icone">🏛️</div>
+        <div>
+          <span class="categoria-servico">SERVIÇO PÚBLICO DIGITAL</span>
+          <h1 class="titulo-servico">Oficina Digital</h1>
+          <p class="descricao-servico">Sistema Unificado de Abertura e Triagem de Chamados Técnicos</p>
+        </div>
+      </div>
+
+      <!-- Status Oficial da Conexão com o Barramento (API) -->
+      <div class="painel-status-servidor">
+        <span class="rotulo-servidor">Servidor Central:</span>
+        <div id="statusApi" class="status-api verificando">
+          <span class="ponto-status"></span>
+          <span id="textoStatusApi">Consultando API (localhost:8000)...</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- FAIXA DE NAVEGAÇÃO / MIGALHAS (BREADCRUMB) -->
+  <nav class="faixa-migalhas" aria-label="Localização na página">
+    <div class="container">
+      <span class="migalha-item">Início</span>
+      <span class="migalha-separador">&gt;</span>
+      <span class="migalha-item">Serviços Tecnológicos</span>
+      <span class="migalha-separador">&gt;</span>
+      <span class="migalha-item ativa">Oficina de Computadores</span>
+    </div>
+  </nav>
+
+  <!-- CONTEÚDO PRINCIPAL -->
+  <main class="container conteudo-principal">
+
+    <!-- COMUNICADO OFICIAL SE A API ESTIVER FORA DO AR -->
+    <div id="avisoApiDesligada" class="aviso-oficial aviso-alerta" style="display: none;">
+      <div class="aviso-icone">⚠️</div>
+      <div class="aviso-mensagem">
+        <strong>COMUNICADO DE INDISPONIBILIDADE DO SISTEMA</strong>
+        <p>A API central em Python não está respondendo no endereço <code>http://localhost:8000</code>. Para registrar ou consultar chamados, certifique-se de ligar o servidor local.</p>
+      </div>
+    </div>
+
+    <!-- GRADE DE SERVIÇOS DO CIDADÃO (2 COLUNAS) -->
+    <div class="grade-servicos">
+
+      <!-- ==============================================
+           SERVIÇO 1: ABRIR PROTOCOLO (CHAMADO)
+           ============================================== -->
+      <section class="cartao-cidadao" id="painelAbrirChamado">
+        <div class="cartao-topo">
+          <span class="etiqueta-etapa">SERVIÇO 01</span>
+          <h2 class="cartao-titulo">Abrir Chamado Técnico</h2>
+          <p class="cartao-subtitulo">Solicite o diagnóstico e reparo do seu computador preenchendo os dados abaixo:</p>
+        </div>
+
+        <form id="formAbrirChamado" class="formulario-oficial" novalidate>
+
+          <!-- Campo 1: nome -->
+          <div class="campo-oficial">
+            <label for="nome" class="rotulo-oficial">
+              Nome do requerente / cliente <span class="obrigatorio">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="nome" 
+              name="nome" 
+              class="entrada-oficial" 
+              placeholder="Digite o nome completo (Ex: João da Silva)" 
+              required
+            >
+            <span class="ajuda-campo">Identificação do titular da solicitação.</span>
+          </div>
+
+          <!-- Campo 2: contato -->
+          <div class="campo-oficial">
+            <label for="contato" class="rotulo-oficial">
+              Canal de contato (E-mail ou Telefone) <span class="obrigatorio">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="contato" 
+              name="contato" 
+              class="entrada-oficial" 
+              placeholder="Ex: (11) 98765-4321 ou cidadao@email.com" 
+              required
+            >
+            <span class="ajuda-campo">Usado para envio de comunicados e laudos.</span>
+          </div>
+
+          <!-- Campo 3: equipamento -->
+          <div class="campo-oficial">
+            <label for="equipamento" class="rotulo-oficial">
+              Equipamento <span class="obrigatorio">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="equipamento" 
+              name="equipamento" 
+              class="entrada-oficial" 
+              placeholder="Ex: Dell G15, Acer Nitro 5, PC Desktop" 
+              required
+            >
+            <span class="ajuda-campo">Marca e modelo do computador ou notebook.</span>
+          </div>
+
+          <!-- Campo 4: relato -->
+          <div class="campo-oficial">
+            <label for="relato" class="rotulo-oficial">
+              Relato do problema (Defeito apresentado) <span class="obrigatorio">*</span>
+            </label>
+            <textarea 
+              id="relato" 
+              name="relato" 
+              class="entrada-oficial area-texto-oficial" 
+              rows="4" 
+              placeholder="Descreva detalhadamente o comportamento do equipamento..." 
+              required
+            ></textarea>
+            <span class="ajuda-campo">Quanto mais detalhes, mais precisa será a triagem automática.</span>
+          </div>
+
+          <!-- Ações do formulário -->
+          <div class="acoes-formulario">
+            <button type="submit" id="btnEnviarChamado" class="botao-gov botao-primario">
+              Enviar chamado
+            </button>
+            <button type="button" id="btnExemplo" class="botao-gov botao-secundario">
+              Preencher exemplo
+            </button>
+          </div>
+
+        </form>
+
+        <!-- COMPROVANTE DE PROTOCOLO GERADO -->
+        <div id="sucessoChamado" class="comprovante-oficial" style="display: none;">
+          <div class="comprovante-cabecalho">
+            <span class="comprovante-selo">✓ PROTOCOLO GERADO COM SUCESSO</span>
+          </div>
+          <p class="comprovante-texto">O seu chamado foi cadastrado no Sistema Nacional da Oficina Digital.</p>
+          <div class="caixa-protocolo">
+            <span class="rotulo-protocolo">Número do Protocolo:</span>
+            <span class="numero-protocolo" id="valorNumeroChamado">#1</span>
+          </div>
+          <p class="instrucao-protocolo">
+            Guarde este número. Você pode utilizá-lo na área ao lado para acompanhar a triagem e o laudo técnico.
+          </p>
+        </div>
+
+        <!-- MENSAGEM DE ERRO AO ENVIAR -->
+        <div id="erroEnvio" class="aviso-oficial aviso-erro" style="display: none;">
+          <p id="msgErroEnvio">Não foi possível protocolar a solicitação no momento.</p>
+        </div>
+
+      </section>
+
+
+      <!-- ==============================================
+           SERVIÇO 2: ACOMPANHAR PROTOCOLO (CONSULTA)
+           ============================================== -->
+      <section class="cartao-cidadao" id="painelAcompanhar">
+        <div class="cartao-topo">
+          <span class="etiqueta-etapa">SERVIÇO 02</span>
+          <h2 class="cartao-titulo">Acompanhar Chamado</h2>
+          <p class="cartao-subtitulo">Consulte a situação atual, a prioridade e o parecer técnico do equipamento:</p>
+        </div>
+
+        <form id="formAcompanhar" class="formulario-consulta" novalidate>
+          <div class="linha-busca">
+            <div class="campo-oficial flex-1">
+              <label for="numeroConsulta" class="rotulo-oficial">
+                Número do Chamado / Protocolo:
+              </label>
+              <input 
+                type="number" 
+                id="numeroConsulta" 
+                name="numeroConsulta" 
+                class="entrada-oficial" 
+                placeholder="Ex: 1" 
+                min="1" 
+                required
+              >
+            </div>
+            <button type="submit" id="btnConsultarChamado" class="botao-gov botao-primario botao-pesquisa">
+              Consultar
+            </button>
+          </div>
+        </form>
+
+        <!-- MENSAGEM DE ERRO NA CONSULTA -->
+        <div id="erroConsulta" class="aviso-oficial aviso-erro" style="display: none;">
+          <p id="msgErroConsulta">Chamado não localizado na base de dados.</p>
+        </div>
+
+        <!-- QUADRO DE DETALHES DO PROCESSO CONSULTADO -->
+        <div id="dadosChamado" class="quadro-processo" style="display: none;">
+          
+          <div class="processo-topo">
+            <div>
+              <span class="processo-sub">REGISTRO DE ATENDIMENTO</span>
+              <h3 class="processo-codigo" id="detalheNumero">#1</h3>
+            </div>
+            <div class="processo-selos">
+              <span id="detalheStatus" class="selo-oficial selo-status">Aberto</span>
+              <span id="detalhePrioridade" class="selo-oficial selo-prioridade">Prioridade Média</span>
+            </div>
+          </div>
+
+          <div class="tabela-processo">
+            <div class="item-processo">
+              <span class="propriedade">Equipamento:</span>
+              <strong class="valor" id="detalheEquipamento">-</strong>
+            </div>
+            <div class="item-processo">
+              <span class="propriedade">Data de Registro:</span>
+              <span class="valor" id="detalheData">-</span>
+            </div>
+          </div>
+
+          <!-- LAUDO TÉCNICO OFICIAL DA TRIAGEM -->
+          <div class="parecer-tecnico">
+            <div class="parecer-cabecalho">
+              <span class="parecer-icone">📋</span>
+              <h4 class="parecer-titulo">Laudo Técnico da Triagem</h4>
+            </div>
+            <div class="parecer-corpo" id="detalheLaudo">
+              A triagem ainda está trabalhando
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CAIXA INFORMATIVA PADRÃO GOV -->
+        <div class="informativo-gov">
+          <div class="informativo-titulo">
+            <span>ℹ️</span> <strong>Informações ao Cidadão:</strong>
+          </div>
+          <p class="informativo-texto">
+            A triagem deste serviço analisa os sintomas informados utilizando cruzamento automatizado de dados e inteligência artificial para definir prioridade e peças recomendadas.
+          </p>
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- RODAPÉ INSTITUCIONAL PADRÃO GOVERNO FEDERAL -->
+  <footer class="rodape-governo">
+    <div class="container rodape-conteudo">
+      <div class="rodape-esquerda">
+        <div class="marca-rodape">
+          <span class="gov-texto-rodape">gov.<strong>br</strong></span>
+        </div>
+        <p class="rodape-orgao">Ministério da Ciência, Tecnologia e Inovação</p>
+        <p class="rodape-direito">Oficina Digital &bull; Todos os direitos reservados</p>
+      </div>
+
+      <div class="rodape-direita">
+        <ul class="links-governo">
+          <li><a href="#" class="link-gov">Termos de Uso</a></li>
+          <li><a href="#" class="link-gov">Acesso à Informação</a></li>
+          <li><a href="#" class="link-gov">Privacidade e Segurança</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

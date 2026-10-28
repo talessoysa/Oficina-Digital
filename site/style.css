@@ -1,0 +1,929 @@
+/* ==========================================================================
+   OFICINA DIGITAL - DESIGN SYSTEM MODERNO (Gov.br 2.0 / Modern Tech UI)
+   Estilo refinado com estética contemporânea: tipografia nítida, sombras suaves,
+   gradientes sutis, cantos arredondados, micro-interações e alta acessibilidade.
+   ========================================================================== */
+
+:root {
+  /* Paleta Primária & Cores de Marca */
+  --gov-azul-primario: #0b4dbb;
+  --gov-azul-escuro: #072559;
+  --gov-azul-hover: #083c93;
+  --gov-azul-suave: #eff6ff;
+  --gov-azul-borda: #bfdbfe;
+  --gov-amarelo: #f59e0b;
+  --gov-amarelo-luz: #fef3c7;
+
+  /* Cores de Feedback & Semântica */
+  --status-verde: #10b981;
+  --status-verde-fundo: #ecfdf5;
+  --status-verde-borda: #a7f3d0;
+  --status-verde-texto: #065f46;
+
+  --status-vermelho: #ef4444;
+  --status-vermelho-fundo: #fef2f2;
+  --status-vermelho-borda: #fecaca;
+  --status-vermelho-texto: #991b1b;
+
+  --status-amarelo: #f59e0b;
+  --status-amarelo-fundo: #fffbeb;
+  --status-amarelo-borda: #fde68a;
+  --status-amarelo-texto: #92400e;
+
+  /* Superfícies & Layout */
+  --bg-pagina: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  --borda-card: #e2e8f0;
+  --borda-input: #cbd5e1;
+  --borda-suave: #f1f5f9;
+
+  /* Tipografia & Contrastes */
+  --texto-principal: #0f172a;
+  --texto-secundario: #475569;
+  --texto-mutado: #64748b;
+  --texto-branco: #ffffff;
+
+  /* Sombras Modernas */
+  --sombra-card: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 16px 24px -4px rgba(15, 23, 42, 0.06);
+  --sombra-card-hover: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 24px 36px -6px rgba(15, 23, 42, 0.1);
+  --sombra-botao: 0 4px 14px 0 rgba(11, 77, 187, 0.35);
+  --sombra-botao-hover: 0 6px 20px 0 rgba(11, 77, 187, 0.45);
+
+  /* Fontes e Transições */
+  --fonte-principal: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --transicao: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --raio-card: 18px;
+  --raio-input: 12px;
+  --raio-pilula: 9999px;
+}
+
+/* Reset e Configurações Globais */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--fonte-principal);
+  background-color: var(--bg-pagina);
+  color: var(--texto-principal);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   1. BARRA BRASIL (GOV.BR)
+   ========================================================================== */
+.barra-brasil {
+  background: #090d16;
+  color: #e2e8f0;
+  padding: 8px 0;
+  font-size: 13px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.container-brasil {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.brasil-logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brasil-bandeira {
+  font-size: 18px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.brasil-link {
+  text-decoration: none;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.gov-texto {
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+
+.gov-texto strong {
+  font-weight: 800;
+  color: #facc15;
+}
+
+.brasil-orgao {
+  color: #94a3b8;
+  font-size: 13px;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 12px;
+}
+
+.brasil-acessibilidade {
+  display: flex;
+  align-items: center;
+}
+
+.btn-acessibilidade {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicao);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-acessibilidade:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #ffffff;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO DO SERVIÇO
+   ========================================================================== */
+.cabecalho-servico {
+  background: linear-gradient(135deg, #071c3d 0%, #0a2f68 55%, #0d418f 100%);
+  color: var(--texto-branco);
+  padding: 34px 0 38px;
+  border-bottom: 3px solid var(--gov-amarelo);
+  position: relative;
+  overflow: hidden;
+}
+
+.cabecalho-servico::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.cabecalho-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.identidade-servico {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.brasao-icone {
+  font-size: 42px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  padding: 10px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.categoria-servico {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: #facc15;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.titulo-servico {
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+}
+
+.descricao-servico {
+  font-size: 15px;
+  color: #cbd5e1;
+  margin-top: 4px;
+}
+
+/* Status do Servidor Central (Live Pill) */
+.painel-status-servidor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.rotulo-servidor {
+  font-size: 12px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.status-api {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: var(--raio-pilula);
+  font-size: 14px;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1.5px solid transparent;
+  transition: var(--transicao);
+}
+
+.ponto-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #94a3b8;
+  position: relative;
+}
+
+.status-api.online {
+  color: var(--status-verde-texto);
+  background-color: #f0fdf4;
+  border-color: var(--status-verde-borda);
+}
+.status-api.online .ponto-status {
+  background-color: var(--status-verde);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  animation: pulse-ring 2s infinite;
+}
+
+.status-api.offline {
+  color: var(--status-vermelho-texto);
+  background-color: #fef2f2;
+  border-color: var(--status-vermelho-borda);
+}
+.status-api.offline .ponto-status {
+  background-color: var(--status-vermelho);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+}
+
+.status-api.verificando .ponto-status {
+  background-color: var(--status-amarelo);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+  70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* ==========================================================================
+   3. FAIXA DE MIGALHAS (BREADCRUMB)
+   ========================================================================== */
+.faixa-migalhas {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--borda-card);
+  padding: 12px 0;
+  font-size: 14px;
+  color: var(--texto-mutado);
+}
+
+.migalha-separador {
+  margin: 0 8px;
+  color: #cbd5e1;
+}
+
+.migalha-item.ativa {
+  color: var(--gov-azul-primario);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   4. AVISOS E ALERTAS
+   ========================================================================== */
+.aviso-oficial {
+  border-radius: 14px;
+  padding: 18px 24px;
+  margin: 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.aviso-alerta {
+  background-color: var(--status-amarelo-fundo);
+  border: 1px solid var(--status-amarelo-borda);
+  border-left: 5px solid var(--status-amarelo);
+  color: var(--status-amarelo-texto);
+}
+
+.aviso-erro {
+  background-color: var(--status-vermelho-fundo);
+  border: 1px solid var(--status-vermelho-borda);
+  border-left: 5px solid var(--status-vermelho);
+  color: var(--status-vermelho-texto);
+}
+
+.aviso-icone {
+  font-size: 28px;
+  flex-shrink: 0;
+}
+
+.aviso-mensagem strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.aviso-mensagem code {
+  background-color: rgba(0, 0, 0, 0.06);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+/* ==========================================================================
+   5. CONTEÚDO PRINCIPAL & CARTÕES (GRID)
+   ========================================================================== */
+.conteudo-principal {
+  padding: 40px 24px 80px;
+  flex: 1;
+}
+
+.grade-servicos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .grade-servicos {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* Cartão do Cidadão */
+.cartao-cidadao {
+  background-color: var(--bg-card);
+  border: 1px solid var(--borda-card);
+  border-radius: var(--raio-card);
+  padding: 36px 32px;
+  box-shadow: var(--sombra-card);
+  transition: var(--transicao);
+  position: relative;
+  overflow: hidden;
+}
+
+.cartao-cidadao::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gov-azul-primario), #3b82f6);
+}
+
+.cartao-cidadao:hover {
+  box-shadow: var(--sombra-card-hover);
+}
+
+.cartao-topo {
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--borda-suave);
+  padding-bottom: 18px;
+}
+
+.etiqueta-etapa {
+  display: inline-flex;
+  align-items: center;
+  background: var(--gov-azul-suave);
+  color: var(--gov-azul-primario);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  padding: 4px 12px;
+  border-radius: var(--raio-pilula);
+  margin-bottom: 10px;
+  border: 1px solid var(--gov-azul-borda);
+}
+
+.cartao-titulo {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--texto-principal);
+  letter-spacing: -0.6px;
+  margin-bottom: 6px;
+}
+
+.cartao-subtitulo {
+  font-size: 14px;
+  color: var(--texto-secundario);
+}
+
+/* ==========================================================================
+   6. FORMULÁRIOS & CAMPOS MODERNOS
+   ========================================================================== */
+.campo-oficial {
+  margin-bottom: 22px;
+}
+
+.rotulo-oficial {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--texto-principal);
+}
+
+.obrigatorio {
+  color: var(--status-vermelho);
+}
+
+.entrada-oficial {
+  width: 100%;
+  font-family: var(--fonte-principal);
+  font-size: 15px;
+  color: var(--texto-principal);
+  background-color: var(--bg-input);
+  border: 1.5px solid var(--borda-input);
+  border-radius: var(--raio-input);
+  padding: 13px 16px;
+  outline: none;
+  transition: var(--transicao);
+}
+
+.entrada-oficial:focus {
+  background-color: #ffffff;
+  border-color: var(--gov-azul-primario);
+  box-shadow: 0 0 0 4px rgba(11, 77, 187, 0.12);
+}
+
+.entrada-oficial::placeholder {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.area-texto-oficial {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.5;
+}
+
+.ajuda-campo {
+  display: block;
+  font-size: 12.5px;
+  color: var(--texto-mutado);
+  margin-top: 6px;
+}
+
+/* Botões Modernos */
+.acoes-formulario {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.botao-gov {
+  font-family: var(--fonte-principal);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: var(--raio-pilula);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: var(--transicao);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.botao-primario {
+  background: linear-gradient(135deg, var(--gov-azul-primario) 0%, #083c93 100%);
+  color: #ffffff;
+  box-shadow: var(--sombra-botao);
+}
+
+.botao-primario:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-botao-hover);
+  filter: brightness(1.05);
+}
+
+.botao-primario:active {
+  transform: translateY(0);
+}
+
+.botao-secundario {
+  background-color: #ffffff;
+  color: var(--gov-azul-primario);
+  border-color: #cbd5e1;
+}
+
+.botao-secundario:hover {
+  background-color: var(--gov-azul-suave);
+  border-color: var(--gov-azul-primario);
+}
+
+/* Linha de Busca do Acompanhamento */
+.linha-busca {
+  display: flex;
+  gap: 12px;
+  align-items: flex-end;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.botao-pesquisa {
+  height: 48px;
+  padding: 0 24px;
+}
+
+/* ==========================================================================
+   7. COMPROVANTE DE PROTOCOLO (SUCESSO)
+   ========================================================================== */
+.comprovante-oficial {
+  margin-top: 28px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border: 1.5px solid var(--status-verde-borda);
+  border-radius: 16px;
+  padding: 26px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.comprovante-selo {
+  display: inline-block;
+  background-color: var(--status-verde);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 5px 14px;
+  border-radius: var(--raio-pilula);
+  margin-bottom: 12px;
+}
+
+.comprovante-texto {
+  font-size: 15px;
+  color: var(--status-verde-texto);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.caixa-protocolo {
+  background-color: #ffffff;
+  border: 2px dashed #86efac;
+  border-radius: 14px;
+  padding: 16px;
+  margin: 12px auto 16px;
+  max-width: 320px;
+}
+
+.rotulo-protocolo {
+  display: block;
+  font-size: 12px;
+  color: #166534;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.numero-protocolo {
+  font-size: 38px;
+  font-weight: 800;
+  color: var(--gov-azul-escuro);
+  letter-spacing: -1px;
+}
+
+.instrucao-protocolo {
+  font-size: 13.5px;
+  color: #15803d;
+}
+
+/* ==========================================================================
+   8. QUADRO DO PROCESSO CONSULTADO
+   ========================================================================== */
+.quadro-processo {
+  margin-top: 26px;
+  background-color: #ffffff;
+  border: 1.5px solid var(--borda-card);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.processo-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--borda-suave);
+  padding-bottom: 16px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.processo-sub {
+  font-size: 11.5px;
+  color: var(--texto-mutado);
+  letter-spacing: 1.2px;
+  font-weight: 800;
+  display: block;
+}
+
+.processo-codigo {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--texto-principal);
+  letter-spacing: -0.6px;
+}
+
+.processo-selos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.selo-oficial {
+  padding: 5px 12px;
+  border-radius: var(--raio-pilula);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.selo-status {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.selo-prioridade {
+  background-color: #fffbeb;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.selo-prioridade.alta {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+.tabela-processo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 14.5px;
+}
+
+.item-processo {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--borda-suave);
+  padding-bottom: 8px;
+}
+
+.propriedade {
+  color: var(--texto-secundario);
+  font-weight: 500;
+}
+
+.valor {
+  color: var(--texto-principal);
+  font-weight: 700;
+}
+
+/* Parecer Técnico (Laudo Inteligente) */
+.parecer-tecnico {
+  margin-top: 22px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 18px;
+  position: relative;
+}
+
+.parecer-cabecalho {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.parecer-icone {
+  font-size: 18px;
+}
+
+.parecer-titulo {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--texto-principal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.parecer-corpo {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--texto-principal);
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  padding: 14px 16px;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Caixa Informativa ao Cidadão */
+.informativo-gov {
+  margin-top: 24px;
+  background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-left: 4px solid var(--gov-azul-primario);
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 13.5px;
+}
+
+.informativo-titulo {
+  color: var(--gov-azul-escuro);
+  margin-bottom: 4px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.informativo-texto {
+  color: #334155;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   9. RODAPÉ INSTITUCIONAL
+   ========================================================================== */
+.rodape-governo {
+  background-color: #071c3d;
+  color: #ffffff;
+  border-top: 3px solid var(--gov-amarelo);
+  padding: 40px 0;
+  font-size: 14px;
+  margin-top: auto;
+}
+
+.rodape-conteudo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.gov-texto-rodape {
+  font-size: 26px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.gov-texto-rodape strong {
+  color: #facc15;
+}
+
+.rodape-orgao {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: #f1f5f9;
+}
+
+.rodape-direito {
+  color: #94a3b8;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.links-governo {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-gov {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 13.5px;
+  transition: var(--transicao);
+}
+
+.link-gov:hover {
+  color: #facc15;
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   10. MODO ALTO CONTRASTE (ACESSIBILIDADE RIGOROSA)
+   ========================================================================== */
+body.alto-contraste {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+body.alto-contraste .barra-brasil,
+body.alto-contraste .cabecalho-servico,
+body.alto-contraste .faixa-migalhas,
+body.alto-contraste .cartao-cidadao,
+body.alto-contraste .entrada-oficial,
+body.alto-contraste .quadro-processo,
+body.alto-contraste .parecer-corpo,
+body.alto-contraste .parecer-tecnico,
+body.alto-contraste .comprovante-oficial,
+body.alto-contraste .caixa-protocolo,
+body.alto-contraste .informativo-gov,
+body.alto-contraste .rodape-governo {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border-color: #ffff00 !important;
+  box-shadow: none !important;
+}
+
+body.alto-contraste a,
+body.alto-contraste .cartao-titulo,
+body.alto-contraste .rotulo-oficial,
+body.alto-contraste .propriedade,
+body.alto-contraste .valor,
+body.alto-contraste .titulo-servico,
+body.alto-contraste .parecer-titulo,
+body.alto-contraste .numero-protocolo,
+body.alto-contraste .comprovante-texto,
+body.alto-contraste .instrucao-protocolo,
+body.alto-contraste .informativo-titulo,
+body.alto-contraste .informativo-texto {
+  color: #ffff00 !important;
+}
+
+body.alto-contraste .botao-gov {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 2px solid #ffff00 !important;
+  box-shadow: none !important;
+}
+
+body.alto-contraste .botao-gov:hover {
+  background: #ffff00 !important;
+  color: #000000 !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
